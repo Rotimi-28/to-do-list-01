@@ -4,6 +4,7 @@
     --light: #EEE;
     --dark: #331354; 
     --danger: #ff5b57;
+    --grey: #888;
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     --business-glow: 0px 0px 4px rgba(65, 145, 238, 0.75);
     --personal-glow: 0px 0px 4px rgba(234, 65, 165, 0.75);
@@ -37,12 +38,45 @@ section {
 
 h3 {
     color: var(--dark);
-    font-size: 15px;
+    font-size: 1rempx;
     font-weight: 400px;
     margin-bottom: 0.5rem;
 }
 
 h4 {
-    color: grey;
+    color: var(--grey);
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin: 0.5rem;
 
+}
+
+
+.greeting .title {
+    display: flex;
+}
+
+.greeting .title input {
+    margin-left: 0.5rem;
+    flex: 1 1 0%;
+    min-width: 0;
+}
+
+.greeting .title,
+greeting .title input {
+    color: var(--dark);
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.create-todo input [type="text"] {
+    display: block;
+    width: 100%;
+    font-size: 1.124rem;
+    padding: 1.5rem;
+    color: var(--dark);
+    background-color: #FFF;
+    border-radius: 1.5rem;
+    box-sizing: var(--shadow);
+    margin-bottom: 1.5rem;
 }
