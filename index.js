@@ -17,11 +17,14 @@ window.addEventListener("load", () => {
       content: e.target.elements.content.value,
       category: e.target.category.value,
       done: false,
-      createdAt: new Date().getTime(),
-    };
+      createdAt: new Date().getTime()
+    }
+
     todos.push(todo);
     localStorage.setItem("todo", JSON.stringify(todos));
-    e.target.removeEventListener();
+
+    e.target.reset();
+
     DisplayTodos();
   });
 });
