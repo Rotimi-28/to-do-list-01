@@ -1,11 +1,12 @@
 window.addEventListener("load", () => {
+  //If there's any todos saves in localstorage getItem
   todos = JSON.parse(localStorage.getItem("todos")) || [];
   const nameInput = document.querySelector("#name");
-  const newTodoForm = document.querySelector("#new-todo-Form");
+  const newTodoForm = document.querySelector("#new-todo-form");
 
   const username = localStorage.getItem("username") || "";
-
- nameInput.value = username;
+  //we going to listen to ant change that's made & pass d event
+  nameInput.value = username;
 
   nameInput.addEventListener("change", (e) => {
     localStorage.setItem("username", e.target.value);
@@ -13,27 +14,32 @@ window.addEventListener("load", () => {
 
   newTodoForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
     const todo = {
       content: e.target.elements.content.value,
-      category: e.target.category.value,
+      category: e.target.elements.category.value,
       done: false,
-      createdAt: new Date().getTime()
-    }
+      createdAt: new Date().getTime(),
+    };
 
     todos.push(todo);
-    localStorage.setItem("todo", JSON.stringify(todos));
 
+    localStorage.setItem("todos", JSON.stringify(todos));
+
+    // Reset the form
     e.target.reset();
 
     DisplayTodos();
   });
+
+  DisplayTodos();
 });
 
 function DisplayTodos() {
   const todoList = document.querySelector("#todo-list");
   todoList.innerHTML = "";
 
-  todos.forEach((element) => {
+  todos.forEach((todo) => {
     const todoItem = document.createElement("div");
     todoItem.classList.add("todo-item");
 
@@ -43,31 +49,29 @@ function DisplayTodos() {
     const content = document.createElement("div");
     const actions = document.createElement("div");
     const edit = document.createElement("button");
-    const seleteButton = document.createElement("button");
+    const deleteButton = document.createElement("button");
 
     input.type = "checkbox";
-    input.classList = todo.done;
-    span.classList.add("personal");
-
+    input.checked = todo.done;
+    span.classList.add("bubble");
     if (todo.category == "personal") {
       span.classList.add("personal");
     } else {
       span.classList.add("business");
     }
-
     content.classList.add("todo-content");
     actions.classList.add("actions");
     edit.classList.add("edit");
     deleteButton.classList.add("delete");
 
-    content.innerHTML = `<input type='text' value='${todo.content}' readonly>`;
+    content.innerHTML = `<input type="text" value="${todo.content}" readonly>`;
     edit.innerHTML = "Edit";
     deleteButton.innerHTML = "Delete";
 
     label.appendChild(input);
     label.appendChild(span);
     actions.appendChild(edit);
-    label.appendChild(deleteButton);
+    actions.appendChild(deleteButton);
     todoItem.appendChild(label);
     todoItem.appendChild(content);
     todoItem.appendChild(actions);
@@ -78,7 +82,7 @@ function DisplayTodos() {
       todoItem.classList.add("done");
     }
 
-    input.addEventListener("click", (e) => {
+    input.addEventListener("change", (e) => {
       todo.done = e.target.checked;
       localStorage.setItem("todos", JSON.stringify(todos));
 
@@ -105,7 +109,7 @@ function DisplayTodos() {
 
     deleteButton.addEventListener("click", (e) => {
       todos = todos.filter((t) => t != todo);
-      localStorage.setItem("todos", JSON.stringify("todo"));
+      localStorage.setItem("todos", JSON.stringify(todos));
       DisplayTodos();
     });
   });
