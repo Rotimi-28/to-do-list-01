@@ -17,28 +17,40 @@
     <main class="app">
         <section class="greeting">
             <h2 class="title">
-                Hello! Welcome Buddy <input type="text" id="name" placeholder="Name herer"
+                Hello! Welcome Buddy <input type="text" id="name" placeholder="Name here"
             </h2>
         </section>
+        <!--End greeting sect-->
+
+        <!--Create-todo-->
            <section class="create-todo">
             <h3>CREATE A TODO</h3>
             <form id="new-todo-form">
                 <h4>What is Your todo list?</h4>
-                <input type="text" name="content" id="content" placeholder="e.g make a content" />
-                <h4>Choose your Category</h4>
+                <input type="text" 
+                placeholder="e.g. Make Some Content" 
+                name="content" 
+                id="content" />
+
+                <!--Pick a category-->
+                <h4>Pick a Category</h4>
                 <div class="options">
                     <label>
-                        <input type="radio" name="Category" id="Category1" value="personal" />
+
+                        <input type="radio" name="category" id="category1" value="personal" />
                         <span class="bubble personal"></span>
                         <div>Personal</div>
                     </label>
+
                     <label>
-                        <input type="radio" name="Category" id="Category2" value="business" />
+                        <input type="radio" name="category" id="category2" value="business" />
                         <span class="bubble business"></span>
                         <div>Business</div>
                     </label>
-                    <input type="submit" value="add todo" />
                 </div>
+            </div>
+            <input type="submit" value="add todo" />
+            </form>
            </section>
 
            <section class="todo-list">
@@ -71,10 +83,12 @@
                     </div>
                 </div> -->
             </div>
-    
-        </form>
            </section>
+           <!--End of Todo List-->
     </main>
+    <!--End of Wrapp-->
+
+    <!--js import-->
     <script src="index.js"></script>
 </body>
 </html>
