@@ -17,9 +17,9 @@ You can
 
 ## Build
 This application is built with the following technologioes
-HTML
-CSS
-JAVASCRIPT
+. HTML
+. CSS
+. JAVASCRIPT
 
 ## Contribution
 Please, feel free to contribute, however, kindly email for any contribution
